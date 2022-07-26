@@ -4,7 +4,6 @@ import parser from "prettier/parser-babel";
 import { useRef } from "react";
 import './CodeEditor.css';
 
-
 interface ICodeEditor {
   initialValue: string;
   onChange: (value: string) => void;
@@ -48,7 +47,7 @@ export const CodeEditor: React.FC<ICodeEditor> = ({
         theme="dark"
         value={initialValue}
         language="javascript"
-        height={"300px"}
+        height={"100%"}
         options={{
           wordWrap: "on",
           minimap: { enabled: false },
