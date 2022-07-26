@@ -1,5 +1,5 @@
 import "bulmaswatch/superhero/bulmaswatch.min.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CodeEditor } from "../components/CodeEditor";
 import { Preview } from "../components/Preview";
 import {bundle} from "../bundler";
@@ -9,10 +9,17 @@ export const CodeCell = () => {
   const [input, setInput] = useState("");
   const [code, setCode] = useState("");
 
-  const handleClick = async () => {
-    const output = await bundle(input);
-    setCode(output);
-  };
+  useEffect(() => {
+    // debouncer
+    const timer = setTimeout(async ()=>{
+      const output = await bundle(input);
+      setCode(output);
+    },1000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [input])
+  
 
   return (
     <Resizable direction="vertical">

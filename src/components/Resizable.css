@@ -16,7 +16,12 @@
     width: 10px;
     min-width: 10px;
     height: 100%;
+    z-index: 10;
     cursor: col-resize;
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
   }
   
+  .resize-horizontal {
+    display: flex;
+    flex-direction: row;
+  }
