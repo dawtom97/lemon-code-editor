@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
-import './Preview.css';
+import "./Preview.css";
 
 interface IPreview {
   code: string;
+  err: string;
 }
 
 const html = `
@@ -13,13 +14,23 @@ const html = `
     <body>
        <div id="root"></div>
        <script>
+
+          const handleError = (err) => {
+            const root = document.querySelector('#root');
+            root.innerHTML = '<div style="color:red;"><h4>Runtime error</h4>' + err +'</div>';
+            console.log(err);
+          }
+
+          window.addEventListener('error',(e)=>{
+            e.preventDefault();
+            handleError(e.error);
+          })
+
           window.addEventListener('message', (e)=>{
               try{
-              eval(e.data);
+                eval(e.data);
               } catch (err) {
-                 const root = document.querySelector('#root');
-                 root.innerHTML = '<div style="color:red;"><h4>Runtime error</h4>' + err +'</div>';
-                 console.log(err);
+                handleError(err);
               }
           },false);  
        </script>
@@ -27,25 +38,25 @@ const html = `
   </html>
 `;
 
-export const Preview: React.FC<IPreview> = ({ code }) => {
+export const Preview: React.FC<IPreview> = ({ code, err }) => {
   const iframe = useRef<any>();
   useEffect(() => {
     iframe.current.srcdoc = html;
-    setTimeout(()=>{
+    setTimeout(() => {
       iframe.current.contentWindow.postMessage(code, "*");
-    },50)
-
-  
+    }, 50);
   }, [code]);
+
   return (
     <div className="preview-wrapper">
-    <iframe
-      style={{backgroundColor:'white'}}
-      title="preview"
-      ref={iframe}
-      sandbox="allow-scripts"
-      srcDoc={html}
-    />
+      <iframe
+        style={{ backgroundColor: "white" }}
+        title="preview"
+        ref={iframe}
+        sandbox="allow-scripts"
+        srcDoc={html}
+      />
+      {err ? <div className="preview-error">{err}</div> : null}
     </div>
   );
 };
