@@ -1,4 +1,5 @@
 import * as esbuild from "esbuild-wasm";
+import { ActionProps } from "../state/actions";
 import { fetchPlugin } from "./plugins/fetch-plugin";
 import { unpkgPathPlugin } from "./plugins/unpkg-path-plugin";
 

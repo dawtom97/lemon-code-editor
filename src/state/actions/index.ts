@@ -1,5 +1,5 @@
 import { ActionType } from "../action-types";
-import {CellProps} from '../cell';
+import { CellProps } from '../cell';
 
 export type DirectionProps = 'up' | 'down'
 
@@ -16,8 +16,8 @@ export interface IDeleteCellAction {
     payload: string;
 }
 
-export interface IInsertCellBeforeAction {
-    type: ActionType.INSERT_CELL_BEFORE;
+export interface IInsertCellAfterAction {
+    type: ActionType.INSERT_CELL_AFTER;
     payload: {
         id: string | null;
         type: CellProps;
@@ -32,4 +32,24 @@ export interface IUpdateCellAction {
     }
 }
 
-export type ActionProps = IMoveCellAction | IDeleteCellAction | IInsertCellBeforeAction | IUpdateCellAction;
+
+export interface IBundleStartAction {
+    type: ActionType.BUNDLE_START,
+    payload: {
+        cellId: string
+    }
+}
+
+export interface IBundleCompleteAction {
+    type: ActionType.BUNDLE_COMPLETE,
+    payload: {
+        cellId: string,
+        bundle: {
+            code: string;
+            err: string
+        }
+    }
+}
+
+
+export type ActionProps = IMoveCellAction | IDeleteCellAction | IInsertCellAfterAction | IUpdateCellAction | IBundleCompleteAction | IBundleStartAction;
