@@ -1,3 +1,4 @@
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import { Provider } from "react-redux";
 import { CellList } from "./components/CellList";
 import { CodeCell } from "./components/CodeCell";
