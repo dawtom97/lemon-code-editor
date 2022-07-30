@@ -1,8 +1,9 @@
+import './CellList.css';
 import React, { Fragment } from "react";
-import { useTypedSelector } from "../hooks/useTypedSelector";
-import { Cell } from "../state/cell";
-import { AddCell } from "./AddCell";
-import { CellListItem } from "./CellListItem";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { Cell } from "../../state/cell";
+import { AddCell } from "../AddCell/AddCell";
+import { CellListItem } from "../CellListItem/CellListItem";
 
 export const CellList: React.FC = () => {
   const cells = useTypedSelector(({ cells: { order, data } }: any) =>
@@ -17,7 +18,8 @@ export const CellList: React.FC = () => {
   ));
 
   return (
-    <div>
+    <div className='cell-wrapper'>
+      <h1 className='app-title'>Lemon Code Editor</h1>
       <div className={cells.length === 0 ? "force-visible" : ""}>
         <AddCell previousCellId={null} />
       </div>
