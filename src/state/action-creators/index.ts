@@ -1,5 +1,5 @@
 import { ActionType } from "../action-types";
-import { IDeleteCellAction, IInsertCellAfterAction, IUpdateCellAction, IMoveCellAction, DirectionProps,IBundleStartAction, IBundleCompleteAction, ActionProps } from "../actions";
+import { IDeleteCellAction, IInsertCellAfterAction, IUpdateCellAction, IMoveCellAction, DirectionProps, ActionProps } from "../actions";
 import { CellProps } from '../cell'
 import { Dispatch } from "redux";
 import { bundle } from "../../bundler";
