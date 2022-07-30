@@ -1,9 +1,9 @@
 import './CellListItem.css';
 import React from 'react';
-import { Cell } from '../state';
-import { ActionBar } from './ActionBar';
-import { CodeCell } from './CodeCell';
-import { TextEditor } from './TextEditor';
+import { Cell } from '../../state';
+import { ActionBar } from '../ActionBar/ActionBar';
+import { CodeCell } from '../CodeCell/CodeCell';
+import { TextEditor } from '../TextEditor/TextEditor';
 
 
 interface ICellListItem {

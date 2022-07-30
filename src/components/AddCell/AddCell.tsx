@@ -1,6 +1,6 @@
 import "./AddCell.css";
 import React from "react";
-import { useActions } from "../hooks/useActions";
+import { useActions } from "../../hooks/useActions";
 
 interface IAddCell {
   previousCellId: string | null;
